@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reserves the vertical scrollbar's space permanently, whether or not the
+   page is tall enough to need it right now. Several screens (Module 4's
+   sprint-info popover among them) sit on a `min-h-screen` page and open a
+   popover that grows the document past the viewport height — without this,
+   the scrollbar appearing mid-click shifts the whole page left by its
+   width, so a highlight ring positioned against the pre-click layout ends
+   up visibly offset from the real element it's supposed to be circling. */
+html {
+  scrollbar-gutter: stable;
+  /* Stops the elastic overscroll/rubber-band bounce on a fast scroll past
+     the page's top or bottom edge — that bounce briefly overshoots the
+     sticky TopBar's resting position, which looks like it detaching and
+     leaving a gap above it before settling back. The sidebar never shows
+     this because it's `position: fixed` (viewport-pinned, not affected by
+     document scroll physics at all); this keeps TopBar's sticky layout but
+     removes the bounce that exposes the glitch. */
+  overscroll-behavior: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
