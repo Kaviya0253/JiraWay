@@ -1135,7 +1135,11 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
   const createSprintCardPos =
     createSprintRect && createSprintCardDrag.offset
       ? { top: createSprintRect.top + createSprintCardDrag.offset.top, left: createSprintRect.left + createSprintCardDrag.offset.left }
-      : positionBelow(createSprintRect, createSprintCardWidth.width)
+      // The real Create Sprint button sits near the right edge of the toolbar,
+      // so the clamp needs to reserve room for the SplitStepButton (32px) plus
+      // its gap-3 (12px) that sits beside the card — otherwise the arrow spills
+      // past the screen edge and becomes unreachable.
+      : positionBelow(createSprintRect, createSprintCardWidth.width + 44)
   const sprintIntroCardPos =
     sprintPanelRect && sprintIntroCardDrag.offset
       ? { top: sprintPanelRect.top + sprintIntroCardDrag.offset.top, left: sprintPanelRect.left + sprintIntroCardDrag.offset.left }
