@@ -16,6 +16,11 @@ import seeItOnBoardImage from '../assets/see it on board.avif'
 import backlogToSprintImage from '../assets/backlog to sprint.svg'
 import finalImage from '../assets/last.svg'
 
+// These position tweaks only correct how a few tour cards look on the
+// deployed (production) build — locally they already render correctly, so
+// gating them behind PROD keeps dev's already-correct layout untouched.
+const IS_DEPLOYED_BUILD = import.meta.env.PROD
+
 const INTRO_VIDEO_POSITION_KEY = 'jiraway-backlog-demo-intro-video-position'
 const HIGHLIGHT_BACKLOG_CARD_POSITION_KEY = 'jiraway-backlog-demo-highlight-card-position'
 const SPRINT_ACTION_CARD_POSITIONS_KEY = 'jiraway-backlog-demo-sprint-action-card-positions'
@@ -200,6 +205,20 @@ function positionBelow(rect, width = CARD_WIDTH) {
   let left = rect.left + rect.width / 2 - width / 2 - LEFT_NUDGE
   left = Math.max(CARD_MARGIN, Math.min(left, viewportWidth - width - CARD_MARGIN))
   const top = Math.max(CARD_MARGIN, Math.min(rect.bottom + 12, window.innerHeight - CARD_BOTTOM_RESERVE))
+  return { top, left }
+}
+
+// Same horizontal centering as positionBelow, but anchored to the top of the
+// rect instead of the bottom — for a rect spanning a whole list/panel
+// (Backlog, Sprint), rect.bottom sits far down the page and gets clamped to
+// the middle of the viewport, which reads as "floating in the middle" rather
+// than attached to the thing it's introducing.
+function positionAtTop(rect, width = CARD_WIDTH) {
+  if (!rect) return null
+  const viewportWidth = window.innerWidth
+  let left = rect.left + rect.width / 2 - width / 2 - LEFT_NUDGE
+  left = Math.max(CARD_MARGIN, Math.min(left, viewportWidth - width - CARD_MARGIN))
+  const top = Math.max(CARD_MARGIN, Math.min(rect.top + 12, window.innerHeight - CARD_BOTTOM_RESERVE))
   return { top, left }
 }
 
@@ -1115,7 +1134,7 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
   const highlightBacklogCardPos = backlogListRect
     ? highlightCardOffset
       ? { top: backlogListRect.top + highlightCardOffset.top, left: backlogListRect.left + highlightCardOffset.left }
-      : positionBelow(backlogListRect, highlightBacklogCardWidth.width)
+      : (IS_DEPLOYED_BUILD ? positionAtTop : positionBelow)(backlogListRect, highlightBacklogCardWidth.width)
     : null
   const dropZoneCardPos =
     dropZoneRect && dragCardDrag.offset
@@ -1124,10 +1143,14 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
   const currentSprintActionStop = SPRINT_ACTION_STOPS[sprintActionIndex]
   const currentSprintActionCardWidth = sprintActionCardWidths[currentSprintActionStop.key] ?? currentSprintActionStop.cardWidth
   const sprintActionCardOffset = sprintActionCardOffsets[currentSprintActionStop.key]
-  const sprintActionCardPos =
+  const sprintActionCardPosRaw =
     sprintActionRect && sprintActionCardOffset
       ? { top: sprintActionRect.top + sprintActionCardOffset.top, left: sprintActionRect.left + sprintActionCardOffset.left }
       : positionLeftOf(sprintActionRect, currentSprintActionCardWidth)
+  // Shifted 50px below the computed position, by request, for all six
+  // Subtask-through-Assignee field-tour stops — deployed build only.
+  const sprintActionCardPos =
+    sprintActionCardPosRaw && (IS_DEPLOYED_BUILD ? { ...sprintActionCardPosRaw, top: sprintActionCardPosRaw.top + 50 } : sprintActionCardPosRaw)
   const boardCardPos =
     boardTicketRect && boardCardDrag.offset
       ? { top: boardTicketRect.top + boardCardDrag.offset.top, left: boardTicketRect.left + boardCardDrag.offset.left }
@@ -1140,12 +1163,14 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
       // its gap-3 (12px) that sits beside the card — otherwise the arrow spills
       // past the screen edge and becomes unreachable.
       : positionBelow(createSprintRect, createSprintCardWidth.width + 44)
-  // Shifted 100px further left than the computed position, by request.
-  const createSprintCardPos = createSprintCardPosRaw && { ...createSprintCardPosRaw, left: createSprintCardPosRaw.left - 100 }
+  // Shifted 100px further left than the computed position, by request —
+  // deployed build only.
+  const createSprintCardPos =
+    createSprintCardPosRaw && (IS_DEPLOYED_BUILD ? { ...createSprintCardPosRaw, left: createSprintCardPosRaw.left - 100 } : createSprintCardPosRaw)
   const sprintIntroCardPos =
     sprintPanelRect && sprintIntroCardDrag.offset
       ? { top: sprintPanelRect.top + sprintIntroCardDrag.offset.top, left: sprintPanelRect.left + sprintIntroCardDrag.offset.left }
-      : positionBelow(sprintPanelRect, sprintIntroCardWidth.width)
+      : (IS_DEPLOYED_BUILD ? positionAtTop : positionBelow)(sprintPanelRect, sprintIntroCardWidth.width)
   const sprintDatesCardPos =
     sprintDatesRect && sprintDatesCardDrag.offset
       ? { top: sprintDatesRect.top + sprintDatesCardDrag.offset.top, left: sprintDatesRect.left + sprintDatesCardDrag.offset.left }
