@@ -192,21 +192,25 @@ function positionRightOf(rect) {
   return { top: rect.top, left: rect.right + 12 }
 }
 
-function positionBelow(rect) {
+function positionBelow(rect, minLeft = CARD_MARGIN) {
   if (!rect) return null
   const viewportWidth = window.innerWidth
   let left = rect.left + rect.width / 2 - CARD_WIDTH / 2
-  left = Math.max(CARD_MARGIN, Math.min(left, viewportWidth - CARD_WIDTH - CARD_MARGIN))
+  left = Math.max(minLeft, Math.min(left, viewportWidth - CARD_WIDTH - CARD_MARGIN))
   return { top: rect.bottom + 12, left }
 }
 
-function positionFor(stop, rect) {
+// minLeft keeps the card from being clamped underneath the module progress
+// panel on the left — CARD_MARGIN alone (16px) is far less than the panel's
+// own width, so a stop whose target sits close to the panel (like the
+// search box) could otherwise render partly hidden behind it.
+function positionFor(stop, rect, minLeft = CARD_MARGIN) {
   if (stop.position === 'right') return positionRightOf(rect)
   if (stop.position === 'below-left') {
-    if (!rect) return { top: 120, left: Math.max(CARD_MARGIN, window.innerWidth / 2 - CARD_WIDTH / 2) }
-    return { top: rect.bottom + 12, left: Math.max(CARD_MARGIN, rect.left - CARD_WIDTH) }
+    if (!rect) return { top: 120, left: Math.max(minLeft, window.innerWidth / 2 - CARD_WIDTH / 2) }
+    return { top: rect.bottom + 12, left: Math.max(minLeft, rect.left - CARD_WIDTH) }
   }
-  return positionBelow(rect)
+  return positionBelow(rect, minLeft)
 }
 
 // Small diamond, half clipped by the card's own background so only the
@@ -460,7 +464,8 @@ export default function Module4({ learnerId, learner, onComplete, onLogout, isRe
   // stays usable rather than getting dimmed/blocked like the rest of the
   // page.
   const combinedStopRect = popoverRect && stopRect ? unionOf([stopRect, popoverRect]) : stopRect
-  const stopCardPos = positionFor(currentStop, combinedStopRect)
+  const panelMinLeft = (panelCollapsed ? MODULE_PANEL_WIDTH_COLLAPSED : MODULE_PANEL_WIDTH) + CARD_MARGIN
+  const stopCardPos = positionFor(currentStop, combinedStopRect, panelMinLeft)
   // A manually-dragged position (calibrated with the popover closed) can't
   // know about the popover — using it while the popover is open would
   // silently undo the repositioning above and let the card cover the real
