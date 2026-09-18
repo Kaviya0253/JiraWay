@@ -1776,7 +1776,7 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
                 onClick={() => setStep('explore')}
                 className="mt-6 rounded-md bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700"
               >
-                Continue
+                Done
               </button>
             </div>
           </div>

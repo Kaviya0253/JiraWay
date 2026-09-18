@@ -173,11 +173,11 @@ const HEX_CLIP = 'polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%)'
 
 function HexIcon({ icon: Icon }) {
   return (
-    <div className="relative h-20 w-20 flex-shrink-0">
+    <div className="relative h-14 w-14 flex-shrink-0">
       <div className="absolute inset-0 bg-gradient-to-b from-amber-400 to-orange-600" style={{ clipPath: HEX_CLIP }} />
       <div className="absolute inset-[2.5px] bg-gray-900" style={{ clipPath: HEX_CLIP }} />
       <div className="absolute inset-0 flex items-center justify-center text-amber-400">
-        <Icon className="h-8 w-8" />
+        <Icon className="h-6 w-6" />
       </div>
     </div>
   )
@@ -230,7 +230,7 @@ function AudienceCard({ icon: Icon, text, index }) {
     <div
       onPointerDown={addRipple}
       style={{ animation: 'audienceCardIn 0.5s ease-out both', animationDelay: `${index * 90}ms` }}
-      className={`group relative flex min-h-[220px] flex-col items-center gap-4 overflow-hidden rounded-2xl border border-white/70 p-8 text-center shadow-lg shadow-black/5 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl dark:border-white/10 ${theme.cardBg} ${theme.hoverBorder}`}
+      className={`group relative flex min-h-[140px] flex-col items-center gap-3 overflow-hidden rounded-2xl border border-white/70 p-4 text-center shadow-lg shadow-black/5 backdrop-blur-2xl backdrop-saturate-150 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl dark:border-white/10 ${theme.cardBg} ${theme.hoverBorder}`}
     >
       {/* Permanent glass sheen — a fixed soft highlight across the top
           third, like light glancing off a curved glass surface, so the
@@ -262,11 +262,11 @@ function AudienceCard({ icon: Icon, text, index }) {
         className={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 ${theme.accent}`}
       />
       <span
-        className={`flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl shadow-sm transition-all duration-300 ease-out group-hover:scale-110 ${theme.iconBg} ${theme.iconText}`}
+        className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl shadow-sm transition-all duration-300 ease-out group-hover:scale-110 ${theme.iconBg} ${theme.iconText}`}
       >
-        <Icon className="h-7 w-7" />
+        <Icon className="h-5 w-5" />
       </span>
-      <p className="relative text-base font-medium leading-snug text-gray-700 dark:text-gray-200">{text}</p>
+      <p className="relative text-sm font-medium leading-snug text-gray-700 dark:text-gray-200">{text}</p>
     </div>
   )
 }
@@ -567,71 +567,76 @@ export default function Landing({ onContinue }) {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-white to-blue-100 px-6 py-8 dark:from-gray-900 dark:to-blue-950 md:px-16">
-        <style>{`
-          @keyframes audienceCardIn {
-            from { opacity: 0; transform: translateY(14px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes waterDropFall {
-            0% { transform: translateY(-14px) scale(0.4); opacity: 0; }
-            40% { opacity: 1; }
-            100% { transform: translateY(0) scale(1); opacity: 0; }
-          }
-          @keyframes waterDropRing {
-            0% { transform: scale(0); opacity: 0.6; }
-            100% { transform: scale(16); opacity: 0; }
-          }
-        `}</style>
+      {/* Both sections below share one viewport height (md:h-screen, split
+          via flex-1) so they cover exactly one screen with no scroll needed
+          between them, instead of each claiming its own tall section. */}
+      <div className="flex flex-col md:h-screen">
+        <section className="relative flex flex-1 flex-col justify-center overflow-hidden bg-gradient-to-b from-white to-blue-100 px-6 py-4 dark:from-gray-900 dark:to-blue-950 md:px-16">
+          <style>{`
+            @keyframes audienceCardIn {
+              from { opacity: 0; transform: translateY(14px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes waterDropFall {
+              0% { transform: translateY(-14px) scale(0.4); opacity: 0; }
+              40% { opacity: 1; }
+              100% { transform: translateY(0) scale(1); opacity: 0; }
+            }
+            @keyframes waterDropRing {
+              0% { transform: scale(0); opacity: 0.6; }
+              100% { transform: scale(16); opacity: 0; }
+            }
+          `}</style>
 
-        {/* Soft neutral shapes behind the cards, purely so the glass panels
-            have something to actually blur — glassmorphism only reads as
-            "frosted glass" when there's texture underneath it to diffuse; a
-            glass panel over a flat, untextured white section just looks
-            like a plain translucent box. Grayscale on purpose, to keep the
-            section itself reading as plain white, not tinted. */}
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-blue-200/70 blur-3xl dark:bg-white/10" />
-          <div className="absolute -right-16 top-10 h-64 w-64 rounded-full bg-blue-200/60 blur-3xl dark:bg-white/[0.07]" />
-          <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-blue-200/60 blur-3xl dark:bg-white/[0.06]" />
-          <div className="absolute -right-10 bottom-0 h-56 w-56 rounded-full bg-blue-200/70 blur-3xl dark:bg-white/10" />
-        </div>
+          {/* Soft neutral shapes behind the cards, purely so the glass panels
+              have something to actually blur — glassmorphism only reads as
+              "frosted glass" when there's texture underneath it to diffuse; a
+              glass panel over a flat, untextured white section just looks
+              like a plain translucent box. Grayscale on purpose, to keep the
+              section itself reading as plain white, not tinted. */}
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-blue-200/70 blur-3xl dark:bg-white/10" />
+            <div className="absolute -right-16 top-10 h-64 w-64 rounded-full bg-blue-200/60 blur-3xl dark:bg-white/[0.07]" />
+            <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-blue-200/60 blur-3xl dark:bg-white/[0.06]" />
+            <div className="absolute -right-10 bottom-0 h-56 w-56 rounded-full bg-blue-200/70 blur-3xl dark:bg-white/10" />
+          </div>
 
-        <h2 className="relative z-10 text-center text-2xl font-bold text-blue-600 dark:text-blue-400 md:text-3xl">
-          Built for people who've never touched Jira before.
-        </h2>
-        <div className="relative z-10 mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {AUDIENCE_CARDS.map(({ icon, text }, index) => (
-            <AudienceCard key={text} icon={icon} text={text} index={index} />
-          ))}
-        </div>
-      </section>
+          <h2 className="relative z-10 text-center text-xl font-bold text-blue-600 dark:text-blue-400 md:text-2xl">
+            Built for people who've never touched Jira before.
+          </h2>
+          <div className="relative z-10 mx-auto mt-4 grid w-full max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {AUDIENCE_CARDS.map(({ icon, text }, index) => (
+              <AudienceCard key={text} icon={icon} text={text} index={index} />
+            ))}
+          </div>
+        </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-100 to-blue-50 px-6 py-14 dark:from-blue-950 dark:to-blue-950 md:px-16">
-        <style>{`
-          @keyframes hexIn {
-            from { opacity: 0; transform: translateY(16px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-          }
-        `}</style>
+        <section className="relative flex flex-1 flex-col justify-center overflow-hidden bg-gradient-to-b from-blue-100 to-blue-50 px-6 py-4 dark:from-blue-950 dark:to-blue-950 md:px-16">
+          <style>{`
+            @keyframes hexIn {
+              from { opacity: 0; transform: translateY(16px) scale(0.9); }
+              to { opacity: 1; transform: translateY(0) scale(1); }
+            }
+          `}</style>
 
-        <h2 className="relative z-10 text-center text-lg font-bold tracking-wide text-blue-600 dark:text-blue-400 md:text-2xl">
-          What Makes <span className="text-orange-600 dark:text-orange-400">JiraWay</span> Different
-        </h2>
+          <h2 className="relative z-10 text-center text-base font-bold tracking-wide text-blue-600 dark:text-blue-400 md:text-xl">
+            What Makes <span className="text-orange-600 dark:text-orange-400">JiraWay</span> Different
+          </h2>
 
-        <div className="relative z-10 mx-auto mt-12 flex max-w-5xl flex-wrap justify-center gap-x-10 gap-y-10">
-          {DIFFERENTIATORS.map(({ icon, title }, index) => (
-            <div
-              key={title}
-              style={{ animation: 'hexIn 0.5s ease-out both', animationDelay: `${index * 100}ms` }}
-              className="flex w-32 flex-col items-center gap-3 text-center"
-            >
-              <HexIcon icon={icon} />
-              <p className="text-sm font-semibold leading-snug text-blue-950 dark:text-white">{title}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+          <div className="relative z-10 mx-auto mt-4 flex max-w-5xl flex-wrap justify-center gap-x-6 gap-y-4">
+            {DIFFERENTIATORS.map(({ icon, title }, index) => (
+              <div
+                key={title}
+                style={{ animation: 'hexIn 0.5s ease-out both', animationDelay: `${index * 100}ms` }}
+                className="flex w-24 flex-col items-center gap-2 text-center"
+              >
+                <HexIcon icon={icon} />
+                <p className="text-xs font-semibold leading-snug text-blue-950 dark:text-white">{title}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
 
       <section className="bg-gradient-to-b from-blue-50 to-blue-100 px-6 py-3 dark:from-blue-950 dark:to-gray-900">
         <div className="mx-auto flex max-w-xl flex-col items-center gap-4 text-center">
