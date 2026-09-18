@@ -1147,16 +1147,23 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
     sprintActionRect && sprintActionCardOffset
       ? { top: sprintActionRect.top + sprintActionCardOffset.top, left: sprintActionRect.left + sprintActionCardOffset.left }
       : positionLeftOf(sprintActionRect, currentSprintActionCardWidth)
+  // The Priority dropdown (`w-36`, right-aligned to the button — see
+  // PrioritySelector.jsx) is wider than the button itself and extends
+  // further left than positionLeftOf accounts for, so the card ends up
+  // overlapping it once "priority" force-opens the real dropdown. Applies
+  // in both dev and deployed — it's a real geometry gap, not an
+  // environment difference.
+  const sprintActionCardPosClamped =
+    sprintActionCardPosRaw && currentSprintActionStop.key === 'priority'
+      ? { ...sprintActionCardPosRaw, left: Math.max(CARD_MARGIN, sprintActionCardPosRaw.left - 100) }
+      : sprintActionCardPosRaw
   // Shifted 40px below the computed position, deployed build only, to clear
   // the highlighted ticket row it'd otherwise sit on top of. Skipped for
-  // "priority" specifically: its real dropdown force-opens directly below
-  // the field (see forceOpen in BacklogPanel.jsx), so shifting down there
-  // would land the card on the open dropdown instead — its unshifted spot
-  // already clears the row without hitting the dropdown.
+  // "priority": shifting it down would land it on the open dropdown instead.
   const sprintActionCardPos =
-    sprintActionCardPosRaw && IS_DEPLOYED_BUILD && currentSprintActionStop.key !== 'priority'
-      ? { ...sprintActionCardPosRaw, top: sprintActionCardPosRaw.top + 40 }
-      : sprintActionCardPosRaw
+    sprintActionCardPosClamped && IS_DEPLOYED_BUILD && currentSprintActionStop.key !== 'priority'
+      ? { ...sprintActionCardPosClamped, top: sprintActionCardPosClamped.top + 40 }
+      : sprintActionCardPosClamped
   const boardCardPos =
     boardTicketRect && boardCardDrag.offset
       ? { top: boardTicketRect.top + boardCardDrag.offset.top, left: boardTicketRect.left + boardCardDrag.offset.left }
