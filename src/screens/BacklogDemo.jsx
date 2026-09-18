@@ -1132,7 +1132,7 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
     boardTicketRect && boardCardDrag.offset
       ? { top: boardTicketRect.top + boardCardDrag.offset.top, left: boardTicketRect.left + boardCardDrag.offset.left }
       : positionBelow(boardTicketRect, boardCardWidth.width)
-  const createSprintCardPos =
+  const createSprintCardPosRaw =
     createSprintRect && createSprintCardDrag.offset
       ? { top: createSprintRect.top + createSprintCardDrag.offset.top, left: createSprintRect.left + createSprintCardDrag.offset.left }
       // The real Create Sprint button sits near the right edge of the toolbar,
@@ -1140,6 +1140,8 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
       // its gap-3 (12px) that sits beside the card — otherwise the arrow spills
       // past the screen edge and becomes unreachable.
       : positionBelow(createSprintRect, createSprintCardWidth.width + 44)
+  // Shifted 100px further left than the computed position, by request.
+  const createSprintCardPos = createSprintCardPosRaw && { ...createSprintCardPosRaw, left: createSprintCardPosRaw.left - 100 }
   const sprintIntroCardPos =
     sprintPanelRect && sprintIntroCardDrag.offset
       ? { top: sprintPanelRect.top + sprintIntroCardDrag.offset.top, left: sprintPanelRect.left + sprintIntroCardDrag.offset.left }
