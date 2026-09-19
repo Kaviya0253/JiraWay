@@ -1,16 +1,96 @@
-# React + Vite
+# JiraWay
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Learn Jira by actually using it.
 
-Currently, two official plugins are available:
+JiraWay is a hands-on learning platform that teaches complete beginners how to use Jira. Instead of watching videos or skimming docs, learners work inside a real, interactive Jira-style workspace, and every concept is taught by doing the actual action on the actual interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live Demo:** [https://jira-way.vercel.app](https://jira-way.vercel.app)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshots
 
-## Expanding the Oxlint configuration
+| Board View | Backlog View |
+|---|---|
+| ![Board](docs/board-view.png) | ![Backlog](docs/backlog-view.png) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Module Demos
+
+- [Module 1: Orientation](#)
+- [Module 2: Creating Your First Issue](#)
+- [Module 3: Updating Progress](#)
+- [Module 4: Boards and Sprints](#)
+- [Module 5: Backlog and Sprint Planning](#)
+
+---
+
+## Why This Exists
+
+Most people learning Jira are handed a video or a wiki page and told to figure out the rest by clicking around. That is guessing, not learning. JiraWay fixes this by putting learners inside a working Jira-style workspace and having them do the action being taught, right on the real element.
+
+## The Problem It Solves
+
+Beginners often cannot use Jira confidently on their own, even after tutorials or documentation, because those resources explain Jira without ever making you practice it. JiraWay closes that gap: every lesson happens inside a real, working ticket board, not in a slideshow beside one.
+
+## Who It Is For
+
+- **Jira beginners:** anyone starting a new job, internship, or team that uses Jira for the first time.
+- **Students and early-career developers:** anyone who wants to learn the tool most engineering teams already run on, before they need it on the job.
+- **Recruiters and interviewers:** the project doubles as a portfolio piece that demonstrates product thinking and frontend engineering at an SDE-1 level.
+
+## What Makes It Different
+
+- **Learn by doing:** there are no passive tutorial videos. Every explanation is attached directly to the real button, field, or card it describes.
+- **One ticket, one story:** a single ticket you create yourself carries through every module, so progress feels continuous rather than a series of disconnected demos.
+- **A genuinely working board:** drag-and-drop, comments, subtasks, sprints, and epics all work. It is not a static mockup with hotspots.
+- **Zero setup for the learner:** no backend, no account creation beyond a name and email, and nothing to install.
+
+## How It Works
+
+JiraWay follows a Learn, Practice, Apply approach across five guided modules. Each module builds on the same ticket.
+
+| # | Module | What You Do |
+|---|---|---|
+| 1 | Orientation | Take a guided tour of a real team workspace: project, board, tickets, and team. |
+| 2 | Creating Your First Issue | Create a real ticket from scratch, with an optional field-by-field walkthrough. |
+| 3 | Updating Progress | Drag your ticket across the board and leave a real comment. |
+| 4 | Boards and Sprints | Learn what a sprint badge, search, and "Complete Sprint" actually do. |
+| 5 | Backlog and Sprint Planning | See where tickets come from, move one into a sprint, and watch it appear on the board. |
+
+After finishing once, the curriculum unlocks a plain workspace to explore freely, along with a "Practice again" option to revisit any module.
+
+## Features
+
+- **Guided, hands-on modules:** every explanation is tied to the real UI element it describes, never a standalone slide.
+- **A real Jira-style board:** drag-and-drop tickets, subtasks, comments, priorities, story points, epics, and sprints.
+- **No backend required:** the entire app runs client-side, and learner progress is saved to `localStorage`, scoped per learner.
+- **Lightweight login:** name and email only, with no password and no real authentication, just enough to keep each learner's progress separate.
+- **Admin tooling:** a hidden admin role for reviewing learner activity and timings, and for resetting demo data during development and demos.
+
+## Tech Stack
+
+- **React** (JavaScript, no TypeScript)
+- **Vite** for the build tool and dev server
+- **Tailwind CSS** for styling
+- **React hooks and `localStorage`** for state, with no backend, database, or external state library
+
+## Getting Started
+
+```bash
+git clone https://github.com/Kaviya0253/JiraWay.git
+cd JiraWay
+npm install
+npm run dev
+```
+
+Then open the local URL printed in the terminal (usually `http://localhost:5173`).
+
+## Why No Backend?
+
+This is a deliberate design choice, not a limitation. JiraWay is a single-learner-per-browser teaching tool, so each learner's progress, tickets, and activity live in their own `localStorage` namespace on their own device. That keeps the project simple to run and simple to deploy (a static build with zero server cost), and it keeps the focus on the teaching experience rather than infrastructure.
+
+## About This Project
+
+JiraWay was built as a portfolio project to explore product thinking, interaction design, and frontend engineering. It designs a guided learning experience around a genuinely functional clone of a complex real-world tool, rather than a simplified mock.
+
+**Author:** Kaviya ([GitHub](https://github.com/Kaviya0253))
