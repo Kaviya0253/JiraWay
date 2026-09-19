@@ -2,9 +2,9 @@
 
 Learn Jira by actually using it.
 
-JiraWay is a hands-on learning platform that teaches complete beginners how to use Jira. Instead of watching videos or skimming docs, learners work inside a real, interactive Jira-style workspace, and every concept is taught by doing the actual action on the actual interface.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-jira--way.vercel.app-blue)](https://jira-way.vercel.app/)
 
-**Live Demo:** [https://jira-way.vercel.app](https://jira-way.vercel.app)
+JiraWay is a hands-on learning platform that teaches complete beginners how to use Jira. Instead of watching videos or skimming docs, learners work inside a real, interactive Jira-style workspace, and every concept is taught by doing the actual action on the actual interface.
 
 ---
 
