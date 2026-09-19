@@ -24,9 +24,7 @@ JiraWay is a hands-on learning platform that teaches complete beginners how to u
 
 ---
 
-## Why This Exists
 
-Most people learning Jira are handed a video or a wiki page and told to figure out the rest by clicking around. That is guessing, not learning. JiraWay fixes this by putting learners inside a working Jira-style workspace and having them do the action being taught, right on the real element.
 
 ## The Problem It Solves
 
@@ -36,7 +34,7 @@ Beginners often cannot use Jira confidently on their own, even after tutorials o
 
 - **Jira beginners:** anyone starting a new job, internship, or team that uses Jira for the first time.
 - **Students and early-career developers:** anyone who wants to learn the tool most engineering teams already run on, before they need it on the job.
-- **Recruiters and interviewers:** the project doubles as a portfolio piece that demonstrates product thinking and frontend engineering at an SDE-1 level.
+
 
 ## What Makes It Different
 
@@ -74,23 +72,5 @@ After finishing once, the curriculum unlocks a plain workspace to explore freely
 - **Tailwind CSS** for styling
 - **React hooks and `localStorage`** for state, with no backend, database, or external state library
 
-## Getting Started
-
-```bash
-git clone https://github.com/Kaviya0253/JiraWay.git
-cd JiraWay
-npm install
-npm run dev
-```
-
-Then open the local URL printed in the terminal (usually `http://localhost:5173`).
-
-## Why No Backend?
-
-This is a deliberate design choice, not a limitation. JiraWay is a single-learner-per-browser teaching tool, so each learner's progress, tickets, and activity live in their own `localStorage` namespace on their own device. That keeps the project simple to run and simple to deploy (a static build with zero server cost), and it keeps the focus on the teaching experience rather than infrastructure.
-
-## About This Project
-
-JiraWay was built as a portfolio project to explore product thinking, interaction design, and frontend engineering. It designs a guided learning experience around a genuinely functional clone of a complex real-world tool, rather than a simplified mock.
 
 **Author:** Kaviya ([GitHub](https://github.com/Kaviya0253))
