@@ -532,9 +532,9 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
   // panel scrolls with the rest of the page, so an absolute position would
   // stay pinned to the screen and drift away from the highlight on scroll;
   // an offset re-anchors to the panel's current (re-measured-on-scroll)
-  // position every render instead. Once the position is settled, tell
-  // Claude to "fix" it: it'll bake the final offset into the JSX below as
-  // fixed values and remove this whole drag setup.
+  // position every render instead. Once the position is settled, bake the
+  // final offset into the JSX below as fixed values and remove this whole
+  // drag setup.
   const [highlightCardOffset, setHighlightCardOffset] = useState(() =>
     loadState(HIGHLIGHT_BACKLOG_CARD_POSITION_KEY, null),
   )
@@ -852,9 +852,9 @@ export default function BacklogDemo({ learnerId, learner, onComplete, onLogout, 
   // the right stop even if these get reordered later). Stored as an OFFSET
   // from the highlighted field's own position — same reasoning as the
   // highlight-backlog card: the field can scroll, an absolute screen
-  // position wouldn't follow it. Once every stop's position is settled, tell
-  // Claude to "fix" them: it'll bake the final offsets into the JSX below as
-  // fixed values and remove this whole drag setup.
+  // position wouldn't follow it. Once every stop's position is settled, bake
+  // the final offsets into the JSX below as fixed values and remove this
+  // whole drag setup.
   const [sprintActionCardOffsets, setSprintActionCardOffsets] = useState(() =>
     loadState(SPRINT_ACTION_CARD_POSITIONS_KEY, {}),
   )
