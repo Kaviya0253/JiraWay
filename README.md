@@ -16,11 +16,11 @@ JiraWay is a hands-on learning platform that teaches complete beginners how to u
 
 ## Module Demos
 
-- [Module 1: Orientation](#)
-- [Module 2: Creating Your First Issue](#)
-- [Module 3: Updating Progress](#)
-- [Module 4: Boards and Sprints](#)
-- [Module 5: Backlog and Sprint Planning](#)
+- [Module 1: Orientation](docs/videos/module-1-orientation.mp4)
+- [Module 2: Creating Your First Issue](docs/videos/module-2-creating-your-first-issue.mp4)
+- [Module 3: Updating Progress](docs/videos/module-3-updating-progress.mp4)
+- [Module 4: Boards and Sprints](docs/videos/module-4-boards-and-sprints.mp4)
+- [Module 5: Backlog and Sprint Planning](docs/videos/module-5-backlog-and-sprint-planning.mp4)
 
 ---
 
