@@ -10,9 +10,11 @@ JiraWay is a hands-on learning platform that teaches complete beginners how to u
 
 ## Screenshots
 
-| Board View | Backlog View |
-|---|---|
-| ![Board](docs/board-view.png) | ![Backlog](docs/backlog-view.png) |
+![Landing Page](docs/landing-page.webp)
+
+![Problem and Solution](docs/problem-solution.png)
+
+![Features](docs/features.png)
 
 ## Module Demos
 
