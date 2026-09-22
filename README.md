@@ -18,11 +18,36 @@ JiraWay is a hands-on learning platform that teaches complete beginners how to u
 
 ## Module Demos
 
-- [Module 1: Orientation](docs/videos/module-1-orientation.mp4)
-- [Module 2: Creating Your First Issue](docs/videos/module-2-creating-your-first-issue.mp4)
-- [Module 3: Updating Progress](docs/videos/module-3-updating-progress.mp4)
-- [Module 4: Boards and Sprints](docs/videos/module-4-boards-and-sprints.mp4)
-- [Module 5: Backlog and Sprint Planning](docs/videos/module-5-backlog-and-sprint-planning.mp4)
+**Module 1: Orientation**
+
+
+https://github.com/user-attachments/assets/627b9ef0-538d-4f3b-beaf-ecd71f638d3b
+
+
+**Module 2: Creating Your First Issue**
+  
+
+https://github.com/user-attachments/assets/8fd0f595-ba19-4f69-a6e7-fad4268a0a51
+
+
+**Module 3: Updating Progress**
+  
+
+https://github.com/user-attachments/assets/5ecbecf8-3028-4879-b094-5eda6e723924
+
+
+**Module 4: Boards and Sprints**
+  
+
+https://github.com/user-attachments/assets/16155592-0311-483b-b94b-a44e941a4244
+
+
+**Module 5: Backlog and Sprint Planning**
+  
+
+https://github.com/user-attachments/assets/563295a6-56d9-42bb-8b4c-50dd15e6743f
+
+
 
 ---
 
