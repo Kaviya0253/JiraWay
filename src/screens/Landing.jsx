@@ -373,7 +373,7 @@ export default function Landing({ onContinue }) {
           <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-b from-transparent to-white blur-2xl dark:to-gray-900" />
         </div>
         <div
-          className="relative w-full max-w-3xl flex-shrink-0 md:w-2/3 md:max-w-none lg:w-3/4"
+          className="relative hidden w-full max-w-3xl flex-shrink-0 md:block md:w-2/3 md:max-w-none lg:w-3/4"
           style={{ transform: `translate(${LANDING_VIDEO_POSITION.left}px, ${LANDING_VIDEO_POSITION.top}px)` }}
         >
           <video
