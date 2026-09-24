@@ -130,6 +130,7 @@ export default function GlobalSearch({ allTickets, onSelectView, onOpenTeam, dis
         {query.length > 0 && (
           <button
             type="button"
+            aria-label="Clear search"
             onMouseDown={(event) => event.preventDefault()}
             onClick={() => setQuery('')}
             className="flex-shrink-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"

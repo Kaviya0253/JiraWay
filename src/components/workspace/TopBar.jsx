@@ -57,6 +57,7 @@ export default function TopBar({
       <div className="flex flex-shrink-0 items-center gap-3">
         <button
           type="button"
+          aria-label="Toggle sidebar"
           disabled={disableTopBarActions}
           onClick={() => onToggleSidebar?.()}
           className="text-gray-700 hover:text-blue-600 disabled:cursor-not-allowed dark:text-gray-200 dark:hover:text-blue-400"
@@ -97,6 +98,7 @@ export default function TopBar({
       <div className="flex flex-shrink-0 items-center gap-3">
         <button
           type="button"
+          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           onClick={toggleTheme}
           className="text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400"
         >
@@ -105,6 +107,7 @@ export default function TopBar({
         <div className="relative">
           <button
             type="button"
+            aria-label="Account menu"
             data-tour="profile-avatar"
             disabled={disableTopBarActions}
             onClick={() => setProfileOpen((open) => !open)}
