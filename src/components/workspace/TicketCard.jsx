@@ -111,6 +111,7 @@ export default function TicketCard({
 
   return (
     <div
+      data-cy={`ticket-card-${ticket.key}`}
       draggable={dragEnabled}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}

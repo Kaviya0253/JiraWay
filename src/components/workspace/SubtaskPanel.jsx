@@ -100,6 +100,7 @@ export default function SubtaskPanel({
         </span>
         <button
           type="button"
+          data-cy="ticket-detail-close"
           onClick={onClose}
           className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
         >
@@ -147,7 +148,7 @@ export default function SubtaskPanel({
         </div>
 
         {ticket.description && (
-          <p className="mt-4 whitespace-pre-wrap text-sm text-gray-700 dark:text-gray-300">
+          <p data-cy="ticket-description" className="mt-4 whitespace-pre-wrap text-sm text-gray-700 dark:text-gray-300">
             {ticket.description}
           </p>
         )}

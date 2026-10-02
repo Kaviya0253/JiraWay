@@ -435,6 +435,7 @@ export default function Landing({ onContinue }) {
               <input
                 type="text"
                 autoFocus
+                data-cy="login-name"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 onKeyDown={(event) => {
@@ -448,6 +449,7 @@ export default function Landing({ onContinue }) {
               <label className="mt-3 block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
               <input
                 type="email"
+                data-cy="login-email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 onKeyDown={(event) => {
@@ -460,6 +462,7 @@ export default function Landing({ onContinue }) {
 
               <button
                 type="button"
+                data-cy="login-continue"
                 onClick={start}
                 disabled={!canContinue}
                 className={[
@@ -481,6 +484,7 @@ export default function Landing({ onContinue }) {
 
               <button
                 type="button"
+                data-cy="landing-get-started"
                 onClick={() => setStarted(true)}
                 className="mt-4 w-full rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700"
               >

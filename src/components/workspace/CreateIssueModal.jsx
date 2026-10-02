@@ -173,6 +173,7 @@ export default function CreateIssueModal({
             <button
               type="button"
               data-tour="create-help"
+              data-cy="create-help"
               onClick={() => {
                 markHelpSeen()
                 // Direct callback, not left to a caller inferring the click
@@ -236,12 +237,14 @@ export default function CreateIssueModal({
             type="text"
             autoFocus
             data-tour="create-title"
+            data-cy="create-title"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             placeholder="Summary"
             className="w-full border-none bg-transparent text-base font-medium text-gray-900 placeholder-gray-900 outline-none dark:text-gray-100 dark:placeholder-gray-100"
           />
           <textarea
+            data-cy="create-description"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
             placeholder="Add a description or type / for actions and Rovo"
@@ -254,6 +257,7 @@ export default function CreateIssueModal({
               <button
                 type="button"
                 data-tour="create-assignee"
+                data-cy="create-assignee"
                 onClick={() => setAssigneeMenuOpen((open) => !open)}
                 className={[
                   'flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium',
@@ -299,6 +303,7 @@ export default function CreateIssueModal({
                       <button
                         key={member.id}
                         type="button"
+                        data-cy={`assignee-option-${member.id}`}
                         onClick={() => {
                           setAssignee(member.name)
                           setAssigneeMenuOpen(false)
@@ -328,6 +333,7 @@ export default function CreateIssueModal({
               <button
                 type="button"
                 data-tour="create-sprint"
+                data-cy="create-sprint"
                 onClick={() => setSprintMenuOpen((open) => !open)}
                 className={[
                   'flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium',
@@ -373,6 +379,7 @@ export default function CreateIssueModal({
                       <button
                         key={number}
                         type="button"
+                        data-cy={`sprint-option-${number}`}
                         onClick={() => {
                           setSprint(number)
                           setSprintMenuOpen(false)
@@ -420,6 +427,7 @@ export default function CreateIssueModal({
           <button
             type="button"
             data-tour="create-submit"
+            data-cy="create-submit"
             disabled={!title.trim()}
             onClick={handleCreate}
             className={[

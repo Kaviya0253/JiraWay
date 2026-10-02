@@ -87,6 +87,7 @@ export default function TopBar({
         <button
           type="button"
           data-tour="create-button"
+          data-cy="create-button"
           onClick={() => setShowCreate(true)}
           className="flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
         >
@@ -109,6 +110,7 @@ export default function TopBar({
             type="button"
             aria-label="Account menu"
             data-tour="profile-avatar"
+            data-cy="account-menu"
             disabled={disableTopBarActions}
             onClick={() => setProfileOpen((open) => !open)}
             className="disabled:cursor-not-allowed"
@@ -137,6 +139,7 @@ export default function TopBar({
                 {onLogout && (
                   <button
                     type="button"
+                    data-cy="logout-button"
                     onClick={() => {
                       setProfileOpen(false)
                       onLogout()

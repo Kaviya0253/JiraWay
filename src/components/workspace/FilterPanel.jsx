@@ -21,11 +21,12 @@ const FIELDS = [
   { key: 'labels', label: 'Labels' },
 ]
 
-function Checkbox({ label, checked, onChange, icon: Icon, iconColor }) {
+function Checkbox({ label, checked, onChange, icon: Icon, iconColor, dataCy }) {
   return (
     <label className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700">
       <input
         type="checkbox"
+        data-cy={dataCy}
         checked={checked}
         onChange={onChange}
         className="h-3.5 w-3.5 rounded border-gray-300 text-blue-600"
@@ -90,6 +91,7 @@ export default function FilterPanel({ filters, onChange, onClose, position }) {
               <button
                 key={field.key}
                 type="button"
+                data-cy={`filter-field-${field.key}`}
                 onClick={() => selectField(field.key)}
                 className={[
                   'flex items-center justify-between rounded-md px-2 py-1.5 text-left text-sm',
@@ -162,6 +164,7 @@ export default function FilterPanel({ filters, onChange, onClose, position }) {
                 <Checkbox
                   key={option.value}
                   label={option.name}
+                  dataCy={`filter-assignee-${option.value}`}
                   checked={(filters.assignee ?? []).includes(option.value)}
                   onChange={() => toggleValue('assignee', option.value)}
                 />

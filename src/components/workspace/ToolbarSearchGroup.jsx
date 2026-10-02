@@ -126,6 +126,7 @@ export default function ToolbarSearchGroup({
         <button
           ref={filterButtonRef}
           type="button"
+          data-cy="filter-button"
           disabled={disabled}
           onClick={toggleFilterOpen}
           className={[
