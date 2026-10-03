@@ -125,37 +125,37 @@ https://github.com/user-attachments/assets/25f75bf3-06df-45db-81f0-3dda5b28ffe6
 
 Name and email show correctly after login (`01-login.cy.js`)
 
-<img src="cypress/screenshots/01-login.cy.js/Login%20shows%20the%20correct%20name%20and%20email%20after%20login.png" width="800" alt="Test 1: Login">
+<img src="docs/cypress/01-login.png" width="800" alt="Test 1: Login">
 
 **Test 2: Logout**
 
 Logout returns to the login screen (`02-logout.cy.js`)
 
-<img src="cypress/screenshots/02-logout.cy.js/Logout%20returns%20to%20the%20login%20screen.png" width="800" alt="Test 2: Logout">
+<img src="docs/cypress/02-logout.png" width="800" alt="Test 2: Logout">
 
 **Test 3: Create Ticket**
 
 A ticket with title and description appears on the board (`03-create-ticket.cy.js`)
 
-<img src="cypress/screenshots/03-create-ticket.cy.js/Create%20ticket%20creates%20a%20ticket%20with%20a%20title%20and%20description,%20and%20it%20appears%20on%20the%20board.png" width="800" alt="Test 3: Create Ticket">
+<img src="docs/cypress/03-create-ticket.png" width="800" alt="Test 3: Create Ticket">
 
 **Test 4: Create Validation**
 
 Create button stays disabled while the title is empty (`04-create-validation.cy.js`)
 
-<img src="cypress/screenshots/04-create-validation.cy.js/Create%20button%20validation%20stays%20disabled%20while%20the%20title%20is%20empty.png" width="800" alt="Test 4: Create Validation">
+<img src="docs/cypress/04-create-validation.png" width="800" alt="Test 4: Create Validation">
 
 **Test 5: Persistence**
 
 Description is kept after reload (`05-create-persistence.cy.js`)
 
-<img src="cypress/screenshots/05-create-persistence.cy.js/Ticket%20persistence%20keeps%20the%20description%20after%20reload.png" width="800" alt="Test 5: Persistence">
+<img src="docs/cypress/05-create-persistence.png" width="800" alt="Test 5: Persistence">
 
 **Test 6: Filter by Assignee**
 
 Assignee filter shows only the logged-in user's tickets (`06-filter.cy.js`)
 
-<img src="cypress/screenshots/06-filter.cy.js/Filter%20by%20assignee%20shows%20only%20tickets%20assigned%20to%20the%20logged-in%20user.png" width="800" alt="Test 6: Filter by Assignee">
+<img src="docs/cypress/06-filter.png" width="800" alt="Test 6: Filter by Assignee">
 
 
 **Author:** Kaviya ([GitHub](https://github.com/Kaviya0253))
